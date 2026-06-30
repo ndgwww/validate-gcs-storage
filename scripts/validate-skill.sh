@@ -19,12 +19,8 @@ require_absent() {
 
 require_file "SKILL.md"
 require_file "agents/openai.yaml"
-require_file "references/official-sources.md"
-require_file "references/gcs-validation-workflows.md"
-require_file "references/gcs-python-basic-smoke-map.md"
 require_file "scripts/validate-skill.sh"
 
-require_absent "README.md"
 require_absent "INSTALLATION_GUIDE.md"
 require_absent "QUICK_REFERENCE.md"
 require_absent "CHANGELOG.md"
@@ -75,8 +71,13 @@ for url in \
   "https://cloud.google.com/storage/docs/request-preconditions" \
   "https://cloud.google.com/python/docs/reference/storage/latest/google.cloud.storage.blob.Blob" \
   "https://cloud.google.com/docs/authentication/application-default-credentials"; do
-  rg -qF "$url" references/official-sources.md || fail "official source missing: $url"
+  rg -qF "$url" SKILL.md || fail "official source missing from SKILL.md: $url"
 done
+
+if rg -n "references/" SKILL.md >/tmp/validate-gcs-storage-references.txt; then
+  cat /tmp/validate-gcs-storage-references.txt >&2
+  fail "SKILL.md must be self-contained and must not depend on references/"
+fi
 
 patterns=(
   "BEGIN PRIVATE ""KEY"
@@ -88,7 +89,7 @@ patterns=(
 )
 
 for pattern in "${patterns[@]}"; do
-  if rg -n --hidden --glob '!.git/**' --glob '!scripts/validate-skill.sh' "$pattern" . >/tmp/validate-gcs-storage-sensitive.txt; then
+  if rg -n --hidden --glob '!.git/**' --glob '!scripts/validate-skill.sh' "$pattern" SKILL.md README.md 2>/dev/null >/tmp/validate-gcs-storage-sensitive.txt; then
     cat /tmp/validate-gcs-storage-sensitive.txt >&2
     fail "sensitive pattern found"
   fi
