@@ -1,0 +1,4 @@
+interface:
+  display_name: "Validate GCS Storage"
+  short_description: "Validate Google Cloud Storage integration, Signed URLs, CORS, ADC/IAM, and real bucket smoke flows"
+  default_prompt: "Use validate-gcs-storage to inspect this GCS integration against official Google Cloud documentation, identify risks, and return concrete verification steps."
