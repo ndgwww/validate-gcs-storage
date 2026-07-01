@@ -1,10 +1,10 @@
-# GCS Storage Skills
+# Agent Skills Storage
 
-Codex skills for reviewing and validating Google Cloud Storage integration work.
+Codex skills for reviewing and validating cloud storage integration work.
 
 This repository is a skill package. The repository root is only for GitHub-facing documentation; the installable skill lives under `skills/validate-gcs-storage/`.
 
-Recommended GitHub repository name: `ndgwww/gcs-storage-skills`.
+GitHub repository: `ndgwww/agent-skills-storage`.
 
 ## What It Covers
 
@@ -18,7 +18,7 @@ Recommended GitHub repository name: `ndgwww/gcs-storage-skills`.
 ## Install
 
 ```bash
-npx skills@latest add ndgwww/gcs-storage-skills -g -a codex -s validate-gcs-storage -y --full-depth
+npx skills@latest add ndgwww/agent-skills-storage -g -a codex -s validate-gcs-storage -y --full-depth
 ```
 
 Restart Codex after installation so the skill metadata is reloaded.
