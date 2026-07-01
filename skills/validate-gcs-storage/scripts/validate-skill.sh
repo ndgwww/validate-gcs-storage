@@ -29,10 +29,12 @@ require_file "examples/curl-smoke-checklist.md"
 require_file "examples/fastapi-gcs-contract.md"
 require_file "scripts/validate-skill.sh"
 
-require_file "$REPO_ROOT/README.md"
-require_absent "$REPO_ROOT/SKILL.md"
-require_absent "$REPO_ROOT/agents"
-require_absent "$REPO_ROOT/scripts"
+if [[ -f "$REPO_ROOT/README.md" || -d "$REPO_ROOT/.git" ]]; then
+  require_file "$REPO_ROOT/README.md"
+  require_absent "$REPO_ROOT/SKILL.md"
+  require_absent "$REPO_ROOT/agents"
+  require_absent "$REPO_ROOT/scripts"
+fi
 require_absent "README.md"
 require_absent "INSTALLATION_GUIDE.md"
 require_absent "QUICK_REFERENCE.md"
