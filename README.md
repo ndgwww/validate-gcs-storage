@@ -6,6 +6,11 @@ This repository is a skill package. The repository root is only for GitHub-facin
 
 GitHub repository: `ndgwww/agent-skills-storage`.
 
+## Maintainer Docs
+
+- [AGENTS.md](AGENTS.md): short rules for Codex and other agents working in this repository.
+- [SKILL_CREATION_GUIDE.md](SKILL_CREATION_GUIDE.md): Chinese guide for creating, packaging, publishing, and verifying skills in this collection.
+
 ## What It Covers
 
 - Google Cloud Storage object operation review
