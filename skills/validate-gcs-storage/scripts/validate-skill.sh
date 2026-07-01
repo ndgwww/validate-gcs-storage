@@ -4,6 +4,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SKILL_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 REPO_ROOT="$(cd "$SKILL_ROOT/../.." && pwd)"
+SCAN_ROOT="$SKILL_ROOT"
 cd "$SKILL_ROOT"
 
 fail() {
@@ -30,6 +31,7 @@ require_file "examples/fastapi-gcs-contract.md"
 require_file "scripts/validate-skill.sh"
 
 if [[ -f "$REPO_ROOT/README.md" || -d "$REPO_ROOT/.git" ]]; then
+  SCAN_ROOT="$REPO_ROOT"
   require_file "$REPO_ROOT/README.md"
   require_absent "$REPO_ROOT/SKILL.md"
   require_absent "$REPO_ROOT/agents"
@@ -108,7 +110,7 @@ patterns=(
 )
 
 for pattern in "${patterns[@]}"; do
-  if rg -n --hidden --glob '!.git/**' --glob '!skills/validate-gcs-storage/scripts/validate-skill.sh' "$pattern" "$REPO_ROOT" >/tmp/validate-gcs-storage-sensitive.txt 2>/dev/null; then
+  if rg -n --hidden --glob '!.git/**' --glob '!skills/validate-gcs-storage/scripts/validate-skill.sh' "$pattern" "$SCAN_ROOT" >/tmp/validate-gcs-storage-sensitive.txt 2>/dev/null; then
     cat /tmp/validate-gcs-storage-sensitive.txt >&2
     fail "sensitive pattern found"
   fi
