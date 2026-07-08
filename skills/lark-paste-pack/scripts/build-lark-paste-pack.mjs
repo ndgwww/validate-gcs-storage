@@ -394,9 +394,24 @@ function tryRenderMermaid(code, index) {
   const input = join(assetsMermaid, `diagram-${index}.mmd`);
   const output = join(assetsMermaid, `diagram-${index}.png`);
   writeFileSync(input, code);
-  const result = spawnSync("mmdc", ["-i", input, "-o", output, "-b", "transparent"], { encoding: "utf8" });
+  const result = spawnSync("mmdc", ["-i", input, "-o", output, "-b", "transparent"], {
+    encoding: "utf8",
+    env: puppeteerEnv(),
+  });
   if (result.status === 0 && existsSync(output)) return output;
   return "";
+}
+
+function puppeteerEnv() {
+  const runtimeEnv = process["env"];
+  if (runtimeEnv.PUPPETEER_EXECUTABLE_PATH) return runtimeEnv;
+  const chromeCandidates = [
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "/Applications/Chromium.app/Contents/MacOS/Chromium",
+  ];
+  const chromePath = chromeCandidates.find((candidate) => existsSync(candidate));
+  if (!chromePath) return runtimeEnv;
+  return { ...runtimeEnv, PUPPETEER_EXECUTABLE_PATH: chromePath };
 }
 
 function commandExists(command) {

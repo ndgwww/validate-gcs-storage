@@ -6,7 +6,7 @@ Generate a local Lark-friendly paste/import package from Markdown when the user 
 
 - `copy.html`: rich-text copy entrypoint for browser `Cmd+A` / `Cmd+C`.
 - `copy.txt`: plain-text fallback.
-- `import.docx`: optional Lark import file generated through Pandoc.
+- `import.docx`: optional Lark import file generated through Pandoc or the macOS `textutil` fallback.
 - `report.md` and `report.json`: conversion and verification report.
 - `CHECKLIST.md`: manual Lark paste/import acceptance checklist.
 - `00-source-scan.json` and `01-normalized.md`: intermediate evidence.

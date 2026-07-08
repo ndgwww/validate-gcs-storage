@@ -12,7 +12,7 @@ Use this skill to prepare Markdown for manual insertion into Lark Docs when API/
 - Do not log in to Lark, call Lark APIs, install Lark MCP servers, or overwrite cloud documents.
 - Do not mutate the source Markdown unless the user explicitly asks.
 - Do not output real API keys, Bearer tokens, private keys, R2 secrets, signed URLs, or credential files.
-- Treat DOCX generation as Pandoc-backed. If Pandoc is unavailable, report it clearly instead of pretending a DOCX was produced.
+- Treat DOCX generation as Pandoc-preferred. On macOS, `textutil` may be used as a fallback; when `textutil` is used, report that Lark import image fidelity needs manual verification.
 
 ## Resource Routing
 
@@ -32,4 +32,4 @@ Use this skill to prepare Markdown for manual insertion into Lark Docs when API/
 
 ## Required Outputs
 
-Each pack should contain `copy.html`, `copy.txt`, `report.md`, `report.json`, `CHECKLIST.md`, `01-normalized.md`, and `00-source-scan.json`. `import.docx` is required only when Pandoc is installed or `--docx required` is used.
+Each pack should contain `copy.html`, `copy.txt`, `report.md`, `report.json`, `CHECKLIST.md`, `01-normalized.md`, and `00-source-scan.json`. `import.docx` is required only when Pandoc or the macOS `textutil` fallback succeeds, or when `--docx required` is used.

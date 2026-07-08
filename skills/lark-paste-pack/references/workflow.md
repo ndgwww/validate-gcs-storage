@@ -15,7 +15,7 @@ Optional:
 
 - Pandoc for best-effort `import.docx`.
 - macOS `textutil` as a no-install DOCX fallback when Pandoc is unavailable.
-- Mermaid CLI (`mmdc`) for Mermaid-to-PNG rendering. If unavailable, Mermaid remains a code block and the report marks manual review.
+- Mermaid CLI (`mmdc`) for Mermaid-to-PNG rendering. If unavailable, Mermaid remains a code block and the report marks manual review. On macOS, the bundled script can use `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome` through `PUPPETEER_EXECUTABLE_PATH` when Mermaid CLI was installed with browser download skipped.
 - A browser for opening `copy.html`.
 
 Install recommended DOCX support:

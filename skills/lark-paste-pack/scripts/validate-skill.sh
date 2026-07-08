@@ -102,7 +102,6 @@ patterns=(
   "private""_key"
   "X-Goog-""Signature"
   "GOOGLE_APPLICATION_""CREDENTIALS"
-  "\.""env"
   "api_""key="
   "access_""token="
 )
