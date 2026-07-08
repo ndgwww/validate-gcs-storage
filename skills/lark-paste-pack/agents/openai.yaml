@@ -1,0 +1,4 @@
+interface:
+  display_name: "Lark Paste Pack"
+  short_description: "Generate Lark-friendly HTML/TXT/DOCX paste packs from local Markdown without Lark app credentials"
+  default_prompt: "Use lark-paste-pack to scan a local Markdown file, convert tables/images/Mermaid into Lark-friendly outputs, generate HTML/TXT/DOCX/report/checklist files, verify the pack, and tell me how to manually paste or import it into Lark Docs."

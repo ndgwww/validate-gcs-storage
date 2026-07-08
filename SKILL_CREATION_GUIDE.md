@@ -1,6 +1,6 @@
 # Skill 创建与发布避坑指南
 
-本文是 `agent-skills-storage` 仓库的维护教程，用来沉淀本次创建、发布、重命名和安装 `validate-gcs-storage` skill 过程中遇到的问题。后续新增 storage 相关 skill 时，优先按本文执行。
+本文是 `agent-skills-storage` 仓库的维护教程，用来沉淀创建、发布、重命名和安装合集内 skills 过程中遇到的问题。后续新增 skill 时，优先按本文执行。
 
 ## 1. 仓库定位
 
@@ -14,6 +14,20 @@ agent-skills-storage/
 ├── AGENTS.md
 ├── SKILL_CREATION_GUIDE.md
 └── skills/
+    ├── codex-task-prompt/
+    │   ├── SKILL.md
+    │   ├── README.md
+    │   ├── agents/
+    │   ├── examples/
+    │   ├── references/
+    │   └── scripts/
+    ├── lark-paste-pack/
+    │   ├── SKILL.md
+    │   ├── README.md
+    │   ├── agents/
+    │   ├── examples/
+    │   ├── references/
+    │   └── scripts/
     └── validate-gcs-storage/
         ├── SKILL.md
         ├── agents/
@@ -26,6 +40,8 @@ agent-skills-storage/
 
 ```bash
 npx skills@latest add ndgwww/agent-skills-storage -g -a codex -s validate-gcs-storage -y --full-depth
+npx skills@latest add ndgwww/agent-skills-storage -g -a codex -s codex-task-prompt -y --full-depth
+npx skills@latest add ndgwww/agent-skills-storage -g -a codex -s lark-paste-pack -y --full-depth
 ```
 
 ## 2. 本次踩坑记录
@@ -160,6 +176,8 @@ SIGNED_URL_PLACEHOLDER
 ```bash
 cd /Users/mac004/Desktop/ndgwww/agent-skills-storage
 bash skills/validate-gcs-storage/scripts/validate-skill.sh
+bash skills/codex-task-prompt/scripts/validate-skill.sh
+bash skills/lark-paste-pack/scripts/validate-skill.sh
 git diff --check
 ```
 
@@ -170,6 +188,14 @@ npx skills@latest remove validate-gcs-storage -g -a codex -y
 npx skills@latest add ndgwww/agent-skills-storage -g -a codex -s validate-gcs-storage -y --full-depth
 find ~/.agents/skills/validate-gcs-storage -maxdepth 4 -type f -print | sort
 bash ~/.agents/skills/validate-gcs-storage/scripts/validate-skill.sh
+npx skills@latest remove codex-task-prompt -g -a codex -y
+npx skills@latest add ndgwww/agent-skills-storage -g -a codex -s codex-task-prompt -y --full-depth
+find ~/.agents/skills/codex-task-prompt -maxdepth 4 -type f -print | sort
+bash ~/.agents/skills/codex-task-prompt/scripts/validate-skill.sh
+npx skills@latest remove lark-paste-pack -g -a codex -y
+npx skills@latest add ndgwww/agent-skills-storage -g -a codex -s lark-paste-pack -y --full-depth
+find ~/.agents/skills/lark-paste-pack -maxdepth 4 -type f -print | sort
+bash ~/.agents/skills/lark-paste-pack/scripts/validate-skill.sh
 npx skills@latest ls -g -a codex --json
 ```
 

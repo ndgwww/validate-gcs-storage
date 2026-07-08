@@ -7,7 +7,10 @@
 - 根目录只放仓库级文档和索引，例如 `README.md`、`AGENTS.md`、`SKILL_CREATION_GUIDE.md`。
 - 不要在仓库根目录创建 `SKILL.md`，否则可能遮蔽 `skills/` 下的内层 skill。
 - 每个可安装 skill 必须放在 `skills/<skill-name>/`。
-- 当前 skill 是 `skills/validate-gcs-storage/`，其运行时入口是 `skills/validate-gcs-storage/SKILL.md`。
+- 当前 skills 包括：
+  - `skills/validate-gcs-storage/`：GCS 集成审查与验证。
+  - `skills/codex-task-prompt/`：任务制定、skill/MCP 路由和 Codex 执行提示词生成。
+  - `skills/lark-paste-pack/`：无 Lark 应用凭证时，将 Markdown 转成 Lark 友好粘贴/导入包。
 
 ## Skill 约束
 
@@ -23,6 +26,8 @@
 
 ```bash
 bash skills/validate-gcs-storage/scripts/validate-skill.sh
+bash skills/codex-task-prompt/scripts/validate-skill.sh
+bash skills/lark-paste-pack/scripts/validate-skill.sh
 git diff --check
 ```
 
@@ -32,6 +37,8 @@ git diff --check
 
 ```bash
 npx skills@latest add ndgwww/agent-skills-storage -g -a codex -s validate-gcs-storage -y --full-depth
+npx skills@latest add ndgwww/agent-skills-storage -g -a codex -s codex-task-prompt -y --full-depth
+npx skills@latest add ndgwww/agent-skills-storage -g -a codex -s lark-paste-pack -y --full-depth
 ```
 
 详细创建流程和避坑记录见 `SKILL_CREATION_GUIDE.md`。

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Task Prompt"
+  short_description: "Turn scoped conversations and repo context into Codex execution prompts with skill, tool, MCP, and verification routing"
+  default_prompt: "Use codex-task-prompt to clarify the task phase, inspect local context, choose skills/tools/MCP only where justified, and produce a bounded Codex execution prompt."

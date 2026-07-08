@@ -1,0 +1,15 @@
+{
+  "name": "lark-paste-pack-skill",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build-pack": "node scripts/build-lark-paste-pack.mjs",
+    "verify-pack": "node scripts/verify-pack.mjs",
+    "validate-skill": "bash scripts/validate-skill.sh",
+    "test": "bash scripts/validate-skill.sh"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
